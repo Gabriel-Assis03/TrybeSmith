@@ -1,8 +1,8 @@
 import ProductModel from '../database/models/product.model';
 
 async function getProducts(): Promise<object> {
-  const newProduct = await ProductModel.findAll();
-  return { status: 'SUCCESSFUL', data: newProduct };
+  const allProduct = await ProductModel.findAll();
+  return { status: 'SUCCESSFUL', data: allProduct };
 }
 
 async function postProducts(body: { name: string; price: string; orderId: number; })
