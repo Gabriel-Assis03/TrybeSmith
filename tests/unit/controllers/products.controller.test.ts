@@ -23,8 +23,21 @@ describe('ProductsController', function () {
     const httpResponse = await chai.request(app).post('/products').send(httpRequestBody);
 
     expect(httpResponse.status).to.equal(400);
-    // expect(httpResponse.body).to.be.deep.equal({
-    //   message: "item nao informado"
-    // });
+    expect(httpResponse.body).to.be.deep.equal({
+      message: "item nao informado"
+    });
   });
+
+  // it('post /products', async function () {
+  //   const httpRequestBody = productMock.correctProduct;
+  //   const httpResponse = await chai.request(app).post('/products').send(httpRequestBody);
+
+  //   expect(httpResponse.status).to.equal(201);
+  //   // expect(httpResponse.body).to.be.deep.equal({
+  //   //   "id": 7,
+  //   //   "name": "Martelo de Thor",
+  //   //   "price": "30 peças de ouro",
+  //   //   "orderId": 4
+  //   // });
+  // });
 });
