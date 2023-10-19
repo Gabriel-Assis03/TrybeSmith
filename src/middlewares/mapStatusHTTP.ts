@@ -3,6 +3,7 @@ const httpErrorMap: any = {
   CREATED: 201,
   DELETE: 204,
   INVALID_KEY: 400,
+  UNAUTHORIZED: 401,
   NOT_FOUND: 404,
   CONFLICT: 409,
   INVALID_VALUE: 422,
