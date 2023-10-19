@@ -1,9 +1,12 @@
-import chai, { expect } from 'chai';
 import sinon from 'sinon';
+import chai, { expect } from 'chai';
+import chaiHttp from 'chai-http';
 import sinonChai from 'sinon-chai';
 import { Request, Response } from 'express';
+import app from '../../../src/app';
+import productMock from '../../mocks/product.mock';
 
-chai.use(sinonChai);
+chai.use(chaiHttp);
 
 describe('ProductsController', function () {
   const req = {} as Request;
@@ -15,4 +18,13 @@ describe('ProductsController', function () {
     sinon.restore();
   });
 
+  it('post /products', async function () {
+    const httpRequestBody = productMock.noName;
+    const httpResponse = await chai.request(app).post('/products').send(httpRequestBody);
+
+    expect(httpResponse.status).to.equal(400);
+    // expect(httpResponse.body).to.be.deep.equal({
+    //   message: "item nao informado"
+    // });
+  });
 });
