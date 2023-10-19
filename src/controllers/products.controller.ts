@@ -1,7 +1,13 @@
 import { Request, Response } from 'express';
 import productsService from '../services/products.service';
-import mapStatusHTTP from '../middlewares/mapStatusHTTP';
 import { Product } from '../types/Product';
+import mapStatusHTTP from '../middlewares/mapStatusHTTP';
+
+const getProducts = async (_req: Request, res: Response) => {
+  const { status, data } = await productsService.getProducts() as { 
+    status: string, data: Product };
+  return res.status(mapStatusHTTP(status)).json(data);
+};
 
 const postProducts = async (req: Request, res: Response) => {
   const { status, data } = await productsService.postProducts(req.body) as { 
@@ -11,4 +17,5 @@ const postProducts = async (req: Request, res: Response) => {
 
 export default {
   postProducts,
+  getProducts,
 };
